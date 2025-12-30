@@ -59,6 +59,7 @@ Execution: Async order routing to IBKR/Alpaca
 Monitoring: Real-time P&L, risk metrics, position tracking
 
 Repository Structure
+
 ai_trading_system/
 ├── data/              # Historical and live data storage
 ├── src/               # Core trading system modules
