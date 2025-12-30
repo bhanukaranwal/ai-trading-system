@@ -1,0 +1,107 @@
+api:
+  polygon_key: YOUR_POLYGON_API_KEY
+  alpaca_key: YOUR_ALPACA_API_KEY
+  alpaca_secret: YOUR_ALPACA_SECRET_KEY
+  alpaca_base_url: https://paper-api.alpaca.markets
+  ibkr_host: 127.0.0.1
+  ibkr_port: 7497
+  ibkr_client_id: 1
+
+data:
+  start_date: 2020-01-01
+  end_date: 2025-12-30
+  frequency: 1D
+  data_dir: ./data/
+
+assets:
+  equities:
+    - SPY
+    - QQQ
+    - IWM
+    - EFA
+    - EEM
+  bonds:
+    - TLT
+    - IEF
+    - SHY
+  commodities:
+    - GLD
+    - SLV
+    - DBC
+    - USO
+
+models:
+  xgboost:
+    n_estimators: 200
+    max_depth: 5
+    learning_rate: 0.01
+    subsample: 0.8
+  lstm:
+    hidden_size: 128
+    num_layers: 2
+    dropout: 0.2
+    sequence_length: 60
+    epochs: 50
+    batch_size: 32
+  transformer:
+    d_model: 128
+    nhead: 8
+    num_layers: 4
+    dim_feedforward: 512
+    dropout: 0.1
+    sequence_length: 60
+    epochs: 50
+    batch_size: 32
+
+features:
+  technical_indicators:
+    - SMA_20
+    - SMA_50
+    - RSI_14
+    - MACD
+    - BB_UPPER
+    - BB_LOWER
+    - ATR_14
+    - ADX_14
+  returns_windows:
+    - 1
+    - 5
+    - 10
+    - 21
+  volatility_windows:
+    - 10
+    - 21
+    - 63
+
+portfolio:
+  optimization_method: max_sharpe
+  rebalance_frequency: monthly
+  target_volatility: 0.15
+  min_weight: 0.0
+  max_weight: 0.3
+  transaction_cost: 0.001
+
+risk:
+  max_drawdown: 0.2
+  var_confidence: 0.95
+  cvar_confidence: 0.95
+  position_sizing: kelly_fractional
+  kelly_fraction: 0.25
+  leverage: 1.0
+
+execution:
+  broker: alpaca
+  order_type: market
+  time_in_force: day
+  enable_fractional: true
+  max_slippage: 0.005
+
+backtest:
+  initial_cash: 100000
+  commission: 0.0005
+  slippage: 0.0001
+  freq: 1D
+
+logging:
+  level: INFO
+  log_file: ./logs/trading_system.log
