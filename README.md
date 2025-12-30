@@ -13,11 +13,11 @@ Production-grade algorithmic trading platform leveraging vectorized backtesting,
 - **Real-Time Dashboard**: Streamlit-based monitoring and visualization
 
 ## Installation
-
-```bash
+bash
 git clone https://github.com/yourusername/ai_trading_system.git
 cd ai_trading_system
 pip install -r requirements.txt
+
 Configuration
 Copy config.yaml and add your API credentials
 
@@ -31,3 +31,39 @@ IBKR_PORT, IBKR_CLIENT_ID
 
 Quick Start
 Download Data
+bash
+python scripts/download_data.py
+Train Models
+bash
+python scripts/train_models.py
+Run Backtest
+bash
+python scripts/run_backtest.py
+Launch Dashboard
+bash
+streamlit run src/dashboard.py
+Live Trading
+bash
+python scripts/run_live.py
+Architecture
+Data Layer: Polygon.io primary, Yahoo Finance fallback, Parquet storage
+
+Feature Engineering: Technical indicators, volatility, momentum, macro proxies
+
+AI Signals: Ensemble of XGBoost, LSTM, Transformer models
+
+Portfolio: Multi-asset optimizer with rebalancing logic
+
+Execution: Async order routing to IBKR/Alpaca
+
+Monitoring: Real-time P&L, risk metrics, position tracking
+
+Repository Structure
+ai_trading_system/
+├── data/              # Historical and live data storage
+├── src/               # Core trading system modules
+├── scripts/           # Executable workflows
+├── models/            # Saved ML model weights
+└── config.yaml        # System configuration
+Risk Disclaimer
+This software is for educational and research purposes. Live trading involves substantial risk of loss. Test thoroughly in paper trading before deploying capital.
